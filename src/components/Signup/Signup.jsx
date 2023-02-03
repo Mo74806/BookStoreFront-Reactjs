@@ -144,7 +144,6 @@ export default function Signup() {
 
   let handleSignup = async () => {
     const res = await axios.post(`${BASE_URL}users/signup`, signupData);
-    console.log(res);
     if (res.data.data.user) {
       let token = "Bearer " + res.data.token;
       setCookie("token", token, 1);

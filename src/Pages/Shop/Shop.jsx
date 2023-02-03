@@ -19,7 +19,6 @@ import Modal from "../../components/UI/Modal/Modal";
 import Features from "../../components/Features/Features";
 export default function Shop() {
   const { filters } = useSelector((state) => state);
-  console.log(filters);
 
   let dispatch = useDispatch();
   const [page, setPage] = useState(1);
@@ -31,21 +30,12 @@ export default function Shop() {
       )
     );
   }, [filters]);
-  // const [filters, setFilters] = useState({
-  //   category: [],
-  //   price: 10000,
-  //   rating: 0,
-  // });
-  let handlePagination = (e, value) => {
-    console.log(value);
-  };
+
+  let handlePagination = (e, value) => {};
 
   let handleCategoryFilter = (option) => {
     //check the filter option if exist in the old options
-    console.log(filters.category);
     if (!filters.category.includes(option)) {
-      console.log("here");
-
       dispatch(
         filterActions.setFilters({
           ...filters,
@@ -55,7 +45,6 @@ export default function Shop() {
           ratingQuery: filters.ratingQuery,
         })
       );
-      console.log(filters);
     } else {
       let tempFilters = filters.category;
       let query = "";
@@ -91,7 +80,6 @@ export default function Shop() {
   };
 
   let handleReviewFilter = (rating) => {
-    console.log(rating);
     dispatch(
       filterActions.setFilters({
         ...filters,
@@ -102,9 +90,7 @@ export default function Shop() {
       })
     );
   };
-  useEffect(() => {
-    console.log(filters);
-  }, [filters]);
+  useEffect(() => {}, [filters]);
 
   let showFilterModal = () => {
     setFilterModel(!filterModal);

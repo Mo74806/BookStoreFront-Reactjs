@@ -21,34 +21,6 @@ export function setCookie(name, value, days) {
   document.cookie = name + "=" + value + expires + "; path=/";
 }
 
-// export const login = createAsyncThunk(
-//   "users/login",
-//   async (user, { rejectWithValue }) => {
-//     try {
-//       const res = await axios.post(`${BASE_URL}users/login`, user);
-//       let token = "Bearer " + res.data.token;
-//       setCookie("token", token, 1);
-//       return res.data.data.user;
-//     } catch (error) {
-//       return rejectWithValue(error.message);
-//     }
-//   }
-// );
-
-// export const signup = createAsyncThunk(
-//   "users/signup",
-//   async (user, { rejectWithValue }) => {
-//     console.log("signup");
-//     const res = await axios.post(`${BASE_URL}users/signup`, user);
-//     console.log(res.message);
-//     if (res.data.data.user) {
-//       let token = "Bearer " + res.data.token;
-//       setCookie("token", token, 1);
-//     }
-//     return res.data.data.user;
-//   }
-// );
-
 const userSlice = createSlice({
   name: "user",
   initialState,

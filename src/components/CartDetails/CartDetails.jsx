@@ -10,9 +10,16 @@ import { purchaseActions } from "../../store/reducers/PurchaseSlice";
 import { createPurchase } from "../../store/reducers/PurchaseSlice";
 import { booking } from "../../stripe";
 import Cookies from "js-cookie";
+import Login from "./../Login/Login";
+import { useState } from "react";
+import Modal from "./../UI/Modal/Modal";
+import LoginForm from "../Login/LoginForm";
+import { useEffect } from "react";
 export default function CartDetails() {
   const { cart } = useSelector((state) => state.cart);
   const { purchase } = useSelector((state) => state);
+  const { user } = useSelector((state) => state.user);
+  const [login, setLogin] = useState(false);
 
   let Qty = 0;
   //calculate the total qty and the total price
@@ -24,20 +31,26 @@ export default function CartDetails() {
       parseInt(cart[i].priceDiscount) * (parseInt(cart[i].price) / 100);
     Qty += cart[i].qty;
   }
-
+  useEffect(() => {
+    setLogin(false);
+  }, [user]);
   let dispatch = useDispatch();
   let handleSavePurchase = () => {
-    console.log("hereeeeee");
-    dispatch(createPurchase({ cart }));
-    console.log("-----------------------");
-    console.log(purchase.purchase["id"]);
-    book();
+    if (user) {
+      dispatch(createPurchase({ cart }));
+      book();
+    } else setLogin(true);
   };
   let book = () => {
     booking(purchase.purchase["_id"]);
   };
   return (
     <div className="row m-0">
+      {login && (
+        <Modal>
+          <Login className="col-10" path="/cart" />
+        </Modal>
+      )}
       <PageMainTitle title="Cart" />{" "}
       <div className="container">
         {cart.length == 0 ? (
@@ -80,7 +93,7 @@ export default function CartDetails() {
                     />
                   </div>
                   <div className="col-5  px-1 fw-bold fs-7">
-                    <button className="bg-grey fw-semibold btn-outline">
+                    <button className="bg-gray p-3 fw-semibold btn-outline">
                       ADD CODE
                     </button>
                   </div>

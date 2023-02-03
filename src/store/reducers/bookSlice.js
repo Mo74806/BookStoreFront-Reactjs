@@ -41,7 +41,6 @@ export const getBook = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const res = await axios.get(`${BASE_URL}books/${id}`);
-      console.log(res);
       return res.data.data.book;
     } catch (error) {
       return rejectWithValue(error.message);

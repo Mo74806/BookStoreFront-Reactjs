@@ -22,8 +22,6 @@ export default function AddReviewForm(props) {
   const [warning, setWarning] = useState(false);
   let isTouched;
   let handleSubmit = async (e) => {
-    // let cookie = new Cookies();
-    console.log(Cookies.get("token"));
     if (isTouched || !warning) {
       let res = await axios.post(
         `http://localhost:3030/api/v1/books/${props.id}/reviews`,
@@ -33,7 +31,6 @@ export default function AddReviewForm(props) {
         },
         { headers: { authorization: `${Cookies.get("token")}` } }
       );
-      console.log(res);
     }
   };
 

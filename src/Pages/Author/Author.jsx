@@ -17,9 +17,6 @@ export default function Author(props) {
       return;
     };
     getAuthorData();
-    // books = author.books;
-    // console.log(author);
-    // console.log(books);
   }, []);
 
   return (

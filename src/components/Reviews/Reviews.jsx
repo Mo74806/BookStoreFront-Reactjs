@@ -25,7 +25,6 @@ export default function Reviews(props) {
 
       { headers: { authorization: Cookies.get("token") } }
     );
-    console.log(res);
     if (res.data.data.data.length != 0) {
       setIsHeReviewIt(true);
     }

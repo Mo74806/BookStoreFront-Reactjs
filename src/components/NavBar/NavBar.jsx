@@ -3,7 +3,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./../../App.css";
 import { userActions } from "../../store/reducers/userSlice";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   CNavbar,
   CButton,
@@ -37,6 +37,7 @@ export default function NavBar() {
   const { user } = useSelector((state) => state);
   let navigate = useNavigate();
   let dispatch = useDispatch();
+  let location = useLocation();
   let handleLogout = () => {
     setCookie("token", null);
     dispatch(userActions.setUser());
@@ -108,14 +109,20 @@ export default function NavBar() {
         <div className="collapse row navbar-collapse" id="navbarNavDropdown">
           <ul className={`py-5 col-11 my-5 ${classes["nav-items"]}`}>
             <li className={`  ${classes["nav-item-link"]} `}>
-              <NavLink className="nav-link" activeClassName={`selected`} to="/">
+              <NavLink
+                className={`nav-link ${
+                  location.pathname == "/home" && classes.selected
+                } `}
+                to="/home"
+              >
                 Home
               </NavLink>
             </li>
             <li className={` ${classes["nav-item-link"]}`}>
               <NavLink
-                className="nav-link"
-                activeClassName={classes.selected}
+                className={`nav-link ${
+                  location.pathname == "/books" && classes.selected
+                } `}
                 to="/books"
               >
                 Shop
@@ -123,8 +130,9 @@ export default function NavBar() {
             </li>
             <li className={`${classes["nav-item-link"]}`}>
               <NavLink
-                className="nav-link"
-                activeClassName={classes.selected}
+                className={`nav-link ${
+                  location.pathname == "/contact" && classes.selected
+                } `}
                 to="/contact"
               >
                 Contact
@@ -147,7 +155,7 @@ export default function NavBar() {
               ) : (
                 <p className="fw-bold  my-4 ">
                   {" "}
-                  <Link className={classes.text} to="/login">
+                  <Link className={`${classes.text}  `} to="/login">
                     Login
                   </Link>{" "}
                 </p>

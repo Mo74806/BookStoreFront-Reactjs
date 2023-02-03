@@ -20,7 +20,6 @@ export const createPurchase = createAsyncThunk(
       let { id } = res.data.data.data;
 
       await setCookie("purchase", id, 1);
-      console.log(id);
       return { ...res.data.data.data };
     } catch (error) {
       return rejectWithValue(error.message);
