@@ -1,0 +1,18 @@
+.profile-picture {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 8rem;
+  height: 8rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f65d4e;
+}
+
+.profile-picture > img {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.964) 2px 8px 24px;
+}

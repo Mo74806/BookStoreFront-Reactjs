@@ -1,0 +1,17 @@
+.cover-container {
+  border-radius: 25px;
+  overflow: hidden;
+  justify-content: center;
+}
+.children {
+  width: 80%;
+  line-height: 1.5rem;
+  height: max-content;
+}
+
+.children img {
+  border-radius: 3rem;
+  object-fit: cover;
+  width: 22rem;
+  box-sizing: border-box;
+}

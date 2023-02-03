@@ -1,0 +1,27 @@
+.filter-option {
+  width: 15rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 15px;
+  color: black;
+}
+
+.filter-option div ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  color: rgba(0, 0, 0, 0.474);
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.filter-option div ul li {
+  margin-top: 10px;
+  display: flex;
+
+  align-items: center;
+}
+
+.filter-title {
+  border-bottom: 1px solid rgb(197, 194, 194);
+  font-weight: bolder;
+}

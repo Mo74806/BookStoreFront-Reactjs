@@ -1,0 +1,27 @@
+footer {
+  background-color: #282828;
+  /* background-color: black; */
+  border-top: rgb(219, 179, 78) 5px solid;
+}
+.text-sm {
+  font-size: 0.8rem;
+}
+
+.address-map {
+  text-decoration: underline;
+}
+
+.phone {
+  color: #f65d4e;
+}
+.footer-btn {
+  color: rgb(140, 136, 136);
+  transition: all 0.5s;
+}
+.footer-btn:hover {
+  color: #f65d4e;
+  transition: all 0.5s;
+}
+.footer-first {
+  border-bottom: rgb(140, 136, 136) solid 1px;
+}

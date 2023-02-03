@@ -1,0 +1,11 @@
+.text-sm {
+  font-size: 0.8rem;
+}
+
+.text {
+  color: unset;
+  text-decoration: none;
+}
+.main-color {
+  color: #f65d4e;
+}

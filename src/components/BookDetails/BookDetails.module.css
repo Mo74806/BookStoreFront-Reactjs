@@ -1,0 +1,65 @@
+.text-sm {
+  font-size: 0.7rem;
+}
+
+.borde-line {
+  border-bottom: 1px solid rgb(225, 223, 223);
+  width: 90%;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+.book-title {
+  color: black;
+}
+.price {
+  color: #f65d4e;
+}
+
+.description {
+  font-size: 0.8rem;
+  font-weight: lighter;
+  color: rgba(0, 0, 0, 0.675);
+}
+
+.add-to-watchlist-btn,
+.add-to-cart-btn {
+  border: 0;
+  height: 3rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  width: 10rem;
+  color: white;
+}
+
+.add-to-cart-btn {
+  background-color: #f65d4e;
+  transition: all 0.5s;
+}
+
+.add-to-watchlist-btn {
+  background-color: #0077b5;
+  transition: all 0.5s;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #b84035;
+  transition: all 0.5s;
+}
+
+.add-to-watchlist-btn:hover {
+  background-color: #034f77;
+  transition: all 0.5s;
+}
+.title-btn,
+.arrow {
+  color: rgb(137, 134, 134);
+  transition: all 0.3s;
+}
+
+.title-btn:hover {
+  color: rgb(0, 0, 0);
+  transition: all 0.3s;
+}
+

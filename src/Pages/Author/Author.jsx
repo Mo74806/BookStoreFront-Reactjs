@@ -1,0 +1,35 @@
+import React from "react";
+import AuthorData from "./../../components/AuthorData/AuthorData";
+import AuthorBook from "./../../components/AuthorBook/AuthorBook";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { useEffect } from "react";
+import { useState } from "react";
+export default function Author(props) {
+  const { id } = useParams();
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const [author, setAuthor] = useState({});
+
+  useEffect(() => {
+    let getAuthorData = async () => {
+      let res = await axios.get(`${BASE_URL}authors/${id}`);
+      setAuthor(res.data.data.data);
+      return;
+    };
+    getAuthorData();
+    // books = author.books;
+    // console.log(author);
+    // console.log(books);
+  }, []);
+
+  return (
+    <>
+      <div className="my-5 px-2 container">
+        <AuthorData author={author} />
+      </div>
+      <div className="container">
+        <AuthorBook books={author.books} title={author.name} />
+      </div>
+    </>
+  );
+}

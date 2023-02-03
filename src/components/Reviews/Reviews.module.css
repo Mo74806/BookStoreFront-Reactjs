@@ -1,0 +1,32 @@
+.review-text {
+  font-size: 1.3rem;
+  font-weight: bold;
+  position: relative;
+  top: -2rem;
+}
+
+.text-sm {
+  font-size: 0.8rem;
+}
+.review-input {
+  border: 0;
+  background-color: whitesmoke;
+  width: 100%;
+  height: 3rem;
+  border: whitesmoke 2px solid;
+}
+
+.review-input:focus {
+  outline: none !important;
+
+  border: #f65d4e 2px solid;
+}
+
+.borde-line {
+  border-bottom: 1px solid rgb(225, 223, 223);
+  width: 90%;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}

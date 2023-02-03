@@ -1,0 +1,19 @@
+.author-name {
+  font-size: 2.3rem;
+  font-weight: bolder;
+  color: black;
+}
+
+.author-data {
+  max-height: fit-content;
+}
+
+.author-summary {
+  font-size: 0.8rem;
+
+  color: rgb(86, 86, 86);
+}
+
+.social-media {
+  border-left: 0.3px solid rgb(157, 155, 155);
+}

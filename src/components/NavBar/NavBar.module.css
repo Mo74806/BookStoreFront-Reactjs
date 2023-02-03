@@ -1,0 +1,72 @@
+.navbar-container {
+  height: 58px;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  box-shadow: rgba(17, 12, 46, 0.3) 0px 48px 100px 0px;
+}
+
+.brand {
+  font-weight: bolder;
+  font-size: 1.5rem;
+}
+
+.nav-item-link a {
+  font-weight: bold;
+  font-size: 0.8rem;
+  padding: 19px 0;
+  width: 8rem;
+
+  text-align: center;
+}
+.text {
+  color: unset;
+  text-decoration: none;
+}
+
+.text:hover {
+  color: #ef7e73;
+  transition: 0.3s all;
+}
+.nav-item-link a:hover {
+  color: white !important;
+
+  background-color: #ef7e73;
+  position: relative;
+
+  transition: all 0.5s linear;
+}
+
+.selected {
+  background-color: #f65d4e;
+  font-size: 1rem;
+  color: white;
+}
+
+.nav-items {
+  list-style: none;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+.cart-number {
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  right: 0.2rem;
+  top: -0.7rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(17, 12, 46, 1) 5px 48px 100px 0px;
+  font-size: 0.7rem;
+  border-radius: 50%;
+  background-color: #f65d4e;
+  color: black;
+}
+
+.line-under {
+  border-bottom: 1px solid lightgrey;
+  border-width: 80%;
+}

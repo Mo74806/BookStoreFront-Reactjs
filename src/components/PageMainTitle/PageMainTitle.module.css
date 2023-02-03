@@ -1,0 +1,19 @@
+.page-title-container {
+  background-color: #f0f0f0;
+  height: 10rem;
+  width: 100%;
+}
+
+.title {
+  font-weight: bolder;
+  font-size: 4rem;
+  color: black;
+}
+
+@media (min-width: 0) and (max-width: 768px) {
+  .sub-title {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
+  }
+}

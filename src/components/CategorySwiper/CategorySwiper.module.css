@@ -1,0 +1,9 @@
+.swiper-container {
+  height: 30rem;
+  display: flex;
+  align-items: center;
+}
+
+.section-background {
+  background-color: white;
+}

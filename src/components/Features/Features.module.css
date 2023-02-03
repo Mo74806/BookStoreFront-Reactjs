@@ -1,0 +1,28 @@
+.feature-container {
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  background-color: #f65d4e;
+}
+
+.contain:hover .feature-container {
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+}
+
+.title {
+  font-weight: bolder;
+  font-size: 1.1rem;
+  margin: 0;
+  color: black;
+  width: auto;
+}
+.subtitle {
+  color: rgb(104, 102, 102);
+  font-size: 0.8rem;
+}
+
+.text {
+  position: relative;
+  left: 2rem;
+}

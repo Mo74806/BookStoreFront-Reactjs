@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+
+.header {
+  background-image: url("../../../public/imgs/kevin-et-laurianne-langlais-s3kUrm4iwYI-unsplash.jpg");
+  width: 100%;
+  height: 668px;
+  background-position: center;
+  background-size: cover;
+  object-fit: scale-down;
+  box-shadow: rgb(149, 157, 165) 0px 8px 24px inset;
+}
+.mask {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.go-home-btn {
+  width: 300px;
+  height: 75px;
+  background-color: white;
+
+  border: 0;
+  transition: all 0.5s;
+
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  transition: all 0.3s;
+  color: black;
+  font-family: Anton;
+  font-size: 1.1rem;
+  font-weight: smaller;
+}
+
+.text-header {
+  bottom: 250px;
+  left: 23%;
+  border: 0;
+  transition: all 0.5s;
+  color: white;
+  font-weight: bolder;
+  font-size: 5rem;
+}
+
+.text-header:hover {
+  color: tomato;
+  transition: all 0.5s;
+}
+.go-home-btn:hover {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  transition: all 1s;
+}
+
+@media (max-width: 1080px) and (min-width: 0px) {
+  .text-header {
+    font-size: 3rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    right: 31%;
+    border: 1px solid red;
+  }
+}

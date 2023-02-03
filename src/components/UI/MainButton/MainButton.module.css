@@ -1,0 +1,16 @@
+.section-btn {
+  border: 0;
+  width: 100%;
+  height: 3rem;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.7;
+}
+
+.section-btn:hover {
+  color: black;
+  background-color: white;
+  border: 1px solid inherit;
+  transition: all 0.5s;
+}
