@@ -70,3 +70,37 @@
   border-bottom: 1px solid lightgrey;
   border-width: 80%;
 }
+
+.text-sm {
+  font-size: 0.8rem;
+  font-weight: 800;
+  margin-top: 1.5rem;
+}
+
+.slider {
+  height: 20rem;
+  overflow-y: auto;
+  scroll-behavior: auto;
+}
+
+.bump {
+  animation: bump 3s linear infinite;
+}
+
+@keyframes bump {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(0.9);
+  }
+  30% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

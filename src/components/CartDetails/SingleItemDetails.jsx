@@ -30,10 +30,12 @@ export default function SingleItemDetails(props) {
           </div>
         </div>
 
-        <div className={`${classes["item-price"]} col-2 fw-bold text-danger`}>
+        <div
+          className={`${classes["item-price"]} col-lg-1 col-12 text-end fw-bold text-danger`}
+        >
           ${props.book.price}
         </div>
-        <div className="col-4    d-flex ">
+        <div className="col-lg-3 col-12 text-end  justify-content-md-center justify-content-end   d-flex ">
           <button
             className={`${classes["item-counter"]} ${classes.Btn}`}
             onClick={handleAdd}
@@ -51,6 +53,12 @@ export default function SingleItemDetails(props) {
           >
             -
           </button>
+        </div>
+        <div className="col-2 d-md-flex justify-content-center mt-3 d-none">
+          <p className={`${classes["text-sm"]} mx-2`}> In Stock :</p>{" "}
+          <div className="fw-semibold text-primary text-end m-0 p-0">
+            {props.book.StokeQty}
+          </div>
         </div>
       </div>
     </>

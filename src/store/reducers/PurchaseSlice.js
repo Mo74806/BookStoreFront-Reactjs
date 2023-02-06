@@ -12,17 +12,20 @@ export const createPurchase = createAsyncThunk(
         `${BASE_URL}purchaces`,
         {
           items: data.cart,
+          itemsQty: data.itemsQty,
           status: "reviewing",
           handleOffline: false,
         },
         { headers: { authorization: Cookies.get("token") } }
       );
       let { id } = res.data.data.data;
+      console.log(res);
 
       await setCookie("purchase", id, 1);
       return { ...res.data.data.data };
     } catch (error) {
-      return rejectWithValue(error.message);
+      console.log(error);
+      return rejectWithValue(error.response.data.message);
     }
   }
 );

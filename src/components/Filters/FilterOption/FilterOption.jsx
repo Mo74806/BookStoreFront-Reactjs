@@ -18,7 +18,7 @@ export default function FilterOption(props) {
                     type="checkbox"
                     onChange={() => props.handleSelect(item)}
                   />
-                  {item}
+                  {item.split("_").join(" ")}
                 </li>
               ))}
             </ul>

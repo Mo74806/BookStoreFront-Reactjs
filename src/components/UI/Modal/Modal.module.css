@@ -11,11 +11,10 @@
 .modal {
   position: fixed;
   top: 20vh;
-  overflow-y: auto;
-
+  scroll-behavior: smooth;
+  height: auto;
   left: 5%;
   width: 90%;
-  scroll-behavior: auto;
   background-color: white;
   padding: 1rem;
   border-radius: 14px;

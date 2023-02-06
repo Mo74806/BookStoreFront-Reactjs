@@ -1,35 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./Login.module.css";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-// import { Navigate } from "react-router-dom";
-import { userActions } from "../../store/reducers/userSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { userActions, setCookie } from "../../store/reducers/userSlice";
 import axios from "axios";
-import { setCookie } from "../../store/reducers/userSlice";
-import { useEffect } from "react";
 import MainButton from "../UI/MainButton/MainButton";
-import { useLocation, useNavigate } from "react-router-dom";
-// import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 
 export default function LoginForm(props) {
-  let location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state);
-  useEffect(() => {
-    {
-      user.isLoggedIn && navigate("/home");
-    }
-  }, []);
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [loginError, setLoginError] = useState({
     email: null,
     password: null,
+    validation: null,
   });
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
-
-  // const { user } = useSelector((state) => state.user);
+  useEffect(() => {
+    user.isLoggedIn && navigate("/home");
+  }, []);
+  //handle change of login data and track validation
   let handleChange = (e) => {
     if (e.target.name === "email") {
       if (!(e.target.value.length >= 8)) {
@@ -47,7 +38,7 @@ export default function LoginForm(props) {
       if (!(e.target.value.length >= 8)) {
         setLoginError((prev) => ({
           ...prev,
-          password: "please enter coreect password",
+          password: "please enter correct password",
         }));
       } else {
         setLoginError((prev) => ({
@@ -59,16 +50,25 @@ export default function LoginForm(props) {
 
     setLoginData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-
+  //handle login and sending the request to the server and saving the token
   let handleLogin = async () => {
-    const res = await axios.post(`${BASE_URL}users/login`, loginData);
-    if (res.data.data.user) {
-      let token = "Bearer " + res.data.token;
-      setCookie("token", token, 1);
-      dispatch(
-        userActions.setUser({ user: res.data.data.user, isLoggedIn: true })
-      );
-      navigate(`${props.path || "/home"}`);
+    try {
+      if (loginData.email && loginData.password) {
+        const res = await axios.post(`${BASE_URL}users/login`, loginData);
+        if (res.data.data.user) {
+          let token = "Bearer " + res.data.token;
+          setCookie("token", token, 1);
+          dispatch(
+            userActions.setUser({ user: res.data.data.user, isLoggedIn: true })
+          );
+          navigate(`${props.path || "/home"}`);
+        }
+      }
+    } catch (err) {
+      setLoginError((prev) => ({
+        ...prev,
+        validation: "email or password are not correct",
+      }));
     }
   };
 
@@ -77,18 +77,25 @@ export default function LoginForm(props) {
       className={`${props.className} px-4 text-white ${classes.form} py-5 my-5 `}
     >
       <div className={`h1 fw-semibold ${classes["price"]} `}>Sign In</div>
+      {loginError.validation && (
+        <div className="text-danger text-center mx-auto">
+          {loginError.validation}
+        </div>
+      )}
       <div className="mb-3">
-        <label>Eemail address</label>
+        <label>Email address</label>
         <input
           name="email"
           type="text"
           className="form-control rounded-pill"
-          placeholder="Enter eemail"
+          placeholder="Enter email"
           onChange={handleChange}
         />
       </div>
       {loginError.email && (
-        <p className={classes["text-sm"]}>{loginError.email}</p>
+        <p className={`${classes["text-sm"]} text-danger`}>
+          {loginError.email}
+        </p>
       )}
       <div className="mb-3">
         <label>Password</label>
@@ -101,9 +108,11 @@ export default function LoginForm(props) {
         />
       </div>
       {loginError.password && (
-        <p className={classes["text-sm"]}>{loginError.password}</p>
+        <p className={`${classes["text-sm"]} text-danger`}>
+          {loginError.password}
+        </p>
       )}
-      <div className="mb-3">
+      {/* <div className="mb-3">
         <div className="custom-control custom-checkbox">
           <input
             type="checkbox"
@@ -117,7 +126,7 @@ export default function LoginForm(props) {
             Remember me
           </label>
         </div>
-      </div>
+      </div> */}
       <div className="d-grid">
         <MainButton handleClick={handleLogin} text="Log in" />
       </div>
@@ -125,6 +134,12 @@ export default function LoginForm(props) {
         className={`${classes["text-sm"]} ${classes["forgot-password"]} text-right`}
       >
         Forgot <a href="#">password?</a>
+      </p>
+
+      <p
+        className={`${classes["text-sm"]} ${classes["forgot-password"]} text-right`}
+      >
+        <Link to="/signup">Sign up New account</Link>
       </p>
     </div>
   );

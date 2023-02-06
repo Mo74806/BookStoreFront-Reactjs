@@ -1,27 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./../../App.css";
 import { userActions } from "../../store/reducers/userSlice";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import {
-  CNavbar,
-  CButton,
-  CCollapse,
-  CContainer,
-  CDropdown,
-  CDropdownDivider,
-  CDropdownItem,
-  CDropdownMenu,
-  CDropdownToggle,
-  CForm,
-  CFormInput,
-  CNavbarToggler,
-  CNavbarNav,
-  CNavLink,
-  CNavbarBrand,
-  CNavItem,
-} from "@coreui/react";
+
 import Modal from "../UI/Modal/Modal";
 import CartDetails from "../CartDetails/CartDetails";
 import classes from "./NavBar.module.css";
@@ -35,6 +17,8 @@ import { setCookie } from "../../store/reducers/userSlice";
 export default function NavBar() {
   const { cart } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state);
+  const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
+  const [qty, SetQty] = useState(0);
   let navigate = useNavigate();
   let dispatch = useDispatch();
   let location = useLocation();
@@ -51,18 +35,28 @@ export default function NavBar() {
   //calculate the total qty and the total price
   let totalPrice = 0;
   let totalDiscount = 0;
-  for (let i = 0; i < cart.length; i++) {
-    totalPrice += parseInt(cart[i].price);
-    totalDiscount +=
-      parseInt(cart[i].priceDiscount) * (parseInt(cart[i].price) / 100);
-    Qty += cart[i].qty;
-  }
+  useEffect(() => {
+    for (let i = 0; i < cart.length; i++) {
+      totalPrice += parseInt(cart[i].price);
+      totalDiscount +=
+        parseInt(cart[i].priceDiscount) * (parseInt(cart[i].price) / 100);
+      Qty += cart[i].qty;
+    }
+    SetQty(Qty);
+    setBtnIsHighlighted(true);
+    const timer = setTimeout(() => {
+      setBtnIsHighlighted(false);
+    }, 3000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [cart]);
 
   let handleAppearCart = () => {
     SetCartShown(!cartShown);
   };
 
-  const [visible, setVisible] = useState(false);
   return (
     <nav
       className={`navbar ${classes["navbar-container"]} navbar-expand-lg sticky-top `}
@@ -71,7 +65,7 @@ export default function NavBar() {
         <Modal onClose={handleAppearCart}>
           <div className="container">
             <div className="row ">
-              <div className="col-12">
+              <div className={`col-12 `}>
                 <div className=" py-3 ">
                   {" "}
                   <NavLink to="/cart" onClick={handleAppearCart}>
@@ -79,12 +73,17 @@ export default function NavBar() {
                   </NavLink>
                   <PageMainTitle title="Cart" className="" />
                 </div>
-                {cart.length !== 0 &&
-                  cart.map((book, index) => (
-                    <div key={index} className={classes["line-under"]}>
-                      <SingleItemDetails className={"mx-5 px-2"} book={book} />
-                    </div>
-                  ))}
+                <div className={`${classes.slider}`}>
+                  {cart.length !== 0 &&
+                    cart.map((book, index) => (
+                      <div key={index} className={`${classes["line-under"]}`}>
+                        <SingleItemDetails
+                          className={"mx-5 px-2"}
+                          book={book}
+                        />
+                      </div>
+                    ))}
+                </div>
               </div>
             </div>
           </div>
@@ -107,7 +106,9 @@ export default function NavBar() {
         </button>
 
         <div className="collapse row navbar-collapse" id="navbarNavDropdown">
-          <ul className={`py-5 col-11 my-5 ${classes["nav-items"]}`}>
+          <ul
+            className={`py-5 col-8 justify-content-end ml-5 d-flex my-5 ${classes["nav-items"]}`}
+          >
             <li className={`  ${classes["nav-item-link"]} `}>
               <NavLink
                 className={`nav-link ${
@@ -139,17 +140,19 @@ export default function NavBar() {
               </NavLink>
             </li>
           </ul>
-          <div className="col-1 align-items-center d-flex">
-            <div className="px-3 fs-5">
+          <div className="col-4 text-end justify-content-end align-items-center d-flex">
+            <div className=" fs-5">
               {user.isLoggedIn ? (
                 // <i className="fa-light fas fa-user"></i>
-                <p className="fw-bold   my-3 ">
+
+                <p className="fw-bold    my-3 ">
                   {" "}
                   <button
                     className={`${classes.text} border border-0 bg-transparent m-0 p-0`}
                     onClick={handleLogout}
                   >
-                    Logout
+                    {`${user.user.user.userName}   |  `}{" "}
+                    <span className={`${classes["text-sm"]}`}>Logout</span>
                   </button>
                 </p>
               ) : (
@@ -163,11 +166,17 @@ export default function NavBar() {
             </div>
             <div>
               <button
-                className="px-3 border border-0 bg-transparent fs-5 position-relative"
+                className={` px-3 border border-0 bg-transparent fs-5 position-relative  `}
                 onClick={handleAppearCart}
               >
                 <i className="fa-solid fa-cart-shopping"></i>
-                <div className={classes["cart-number"]}>{Qty}</div>
+                <div
+                  className={`${classes["cart-number"]} ${
+                    btnIsHighlighted ? classes.bump : ""
+                  } `}
+                >
+                  {qty}
+                </div>
               </button>
             </div>
           </div>

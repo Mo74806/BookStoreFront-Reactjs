@@ -17,6 +17,7 @@ import { useDispatch } from "react-redux";
 import MainButton from "../../components/UI/MainButton/MainButton";
 import Modal from "../../components/UI/Modal/Modal";
 import Features from "../../components/Features/Features";
+
 export default function Shop() {
   const { filters } = useSelector((state) => state);
 
@@ -26,12 +27,14 @@ export default function Shop() {
   useEffect(() => {
     dispatch(
       getAllBooks(
-        `${filters.categoryQuery}${filters.priceQuery}&${filters.ratingQuery}`
+        `${filters.categoryQuery}${filters.priceQuery}&${filters.ratingQuery}&page=${page}&limit=12`
       )
     );
-  }, [filters]);
+  }, [filters, page]);
 
-  let handlePagination = (e, value) => {};
+  let handlePagination = (e, value) => {
+    setPage(value);
+  };
 
   let handleCategoryFilter = (option) => {
     //check the filter option if exist in the old options
@@ -105,7 +108,21 @@ export default function Shop() {
               <FilterOption
                 name="Category"
                 handleSelect={handleCategoryFilter}
-                options={["Genre_Fiction", "ss", "option3"]}
+                options={[
+                  "Genre_Fiction",
+                  "Action_Adventure",
+                  "Activity_Books",
+                  "Animals",
+                  "Anthologies",
+                  "Arts_Literature",
+                  "Cars_Trucks",
+                  "Classics",
+                  "Contemporary",
+                  "Cultural",
+                  "European",
+                  "Foreign_Language",
+                  "Historical",
+                ]}
               />
             </div>
             <div className="mb-2">
@@ -130,7 +147,21 @@ export default function Shop() {
             <FilterOption
               name="Category"
               handleSelect={handleCategoryFilter}
-              options={["Genre_Fiction", "ss", "option3"]}
+              options={[
+                "Genre_Fiction",
+                "Action_Adventure",
+                "Activity_Books",
+                "Animals",
+                "Anthologies",
+                "Arts_Literature",
+                "Cars_Trucks",
+                "Classics",
+                "Contemporary",
+                "Cultural",
+                "European",
+                "Foreign_Language",
+                "Historical",
+              ]}
             />
           </div>
           <div className="mb-2">
@@ -157,16 +188,18 @@ export default function Shop() {
           </div>
         </div>
 
-        <div className="col-md-8 col-lg-9  col-12 mr-lg-4    d-flex flex-column align-items-center   mx-md-auto mt-md-5   mb-3 ">
+        <div
+          className={`col-md-8 col-lg-9  col-12 mr-lg-4     mx-md-auto mt-md-5   mb-3 `}
+        >
           <BookGrid />
           <div className="row d-flex  justify-content-center">
-            <div className="col-5 fw-bold">
+            <div className="col-4 d-flex align-items-end  fw-bold">
               <Stack spacing={2}>
                 <Pagination
-                  count={10}
-                  color="secondary"
+                  count={5}
+                  color="primary"
                   page={page}
-                  onChange={handlePagination}
+                  onChange={(_, page) => handlePagination(_, page)}
                 />
               </Stack>
             </div>

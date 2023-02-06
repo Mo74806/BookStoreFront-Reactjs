@@ -28,7 +28,7 @@ export default function BookGrid(props) {
     <div className={`row `}>
       {isLoading && <LoadingSpinner />}
       {/* //props.book */}
-      {books &&
+      {books && books.length > 0 ? (
         books.map((item, index) => {
           if (odd === true) {
             odd = false;
@@ -52,7 +52,16 @@ export default function BookGrid(props) {
               </div>
             );
           }
-        })}
+        })
+      ) : (
+        <div className="mx-auto text-center   py-5 fw-semibold fs-1">
+          <img
+            className="row d-flex justify-self-center text-center mx-auto"
+            src="https://png.pngtree.com/png-clipart/20220709/ourmid/pngtree-book-stack-multiple-books-png-image_5836805.png"
+          />
+          There is no books match Now.
+        </div>
+      )}
     </div>
   );
 }

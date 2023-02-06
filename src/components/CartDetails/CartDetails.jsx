@@ -1,7 +1,7 @@
 import React from "react";
 import SingleItemDetails from "./SingleItemDetails";
 import SingleItemDetailsSide from "./SingleItemDetailsSide";
-import TextField from "@mui/material/TextField";
+import TextField from "@mui/material/TextField/TextField";
 import { useDispatch, useSelector } from "react-redux";
 import classes from "./CartDetails.module.css";
 import PageMainTitle from "../PageMainTitle/PageMainTitle";
@@ -20,6 +20,8 @@ export default function CartDetails() {
   const { purchase } = useSelector((state) => state);
   const { user } = useSelector((state) => state.user);
   const [login, setLogin] = useState(false);
+  const [error, setError] = useState(null);
+  const [btnProceed, setBtnProceed] = useState(false);
 
   let Qty = 0;
   //calculate the total qty and the total price
@@ -31,13 +33,24 @@ export default function CartDetails() {
       parseInt(cart[i].priceDiscount) * (parseInt(cart[i].price) / 100);
     Qty += cart[i].qty;
   }
+
   useEffect(() => {
     setLogin(false);
   }, [user]);
   let dispatch = useDispatch();
-  let handleSavePurchase = () => {
+  let handleSavePurchase = async () => {
+    setBtnProceed(true);
+    let itemsQty = cart.map((item) => item.qty);
     if (user) {
-      dispatch(createPurchase({ cart }));
+      await dispatch(createPurchase({ cart, itemsQty }));
+      if (
+        purchase.serverError ===
+        "the selected books are more than the ones in the stoke "
+      ) {
+        setError(purchase.serverError);
+        setBtnProceed(false);
+        return;
+      }
       book();
     } else setLogin(true);
   };
@@ -46,6 +59,17 @@ export default function CartDetails() {
   };
   return (
     <div className="row m-0">
+      {error && (
+        <Modal
+          onClose={() => {
+            setError(false);
+          }}
+        >
+          <p className="text-danger fw-semibold text-center py-3 mt-3">
+            {error}
+          </p>
+        </Modal>
+      )}
       {login && (
         <Modal>
           <Login className="col-10" path="/cart" />
@@ -62,12 +86,14 @@ export default function CartDetails() {
             <div
               className={`col-lg-7 my-5 my-lg-0 col-12 px-5 ${classes.book1}`}
             >
-              {cart.length !== 0 &&
-                cart.map((book, index) => (
-                  <div key={index} className={classes["line-under"]}>
-                    <SingleItemDetails book={book} />
-                  </div>
-                ))}
+              <div className={classes.slider}>
+                {cart.length !== 0 &&
+                  cart.map((book, index) => (
+                    <div key={index} className={classes["line-under"]}>
+                      <SingleItemDetails book={book} />
+                    </div>
+                  ))}
+              </div>
             </div>
             <div
               className={`col-lg-5 ${classes["side-card"]} col-10 my-lg-0 my-5 px-5 py-3 bg-white rounded`}
@@ -85,12 +111,12 @@ export default function CartDetails() {
               <div className={classes["price-summary"]}>
                 <div className=" row">
                   <div className="col-7 px-1">
-                    <TextField
+                    {/* <TextField
                       fullWidth={true}
                       id="cupon-code"
                       label="Cupon Code"
                       variant="outlined"
-                    />
+                    /> */}
                   </div>
                   <div className="col-5  px-1 fw-bold fs-7">
                     <button className="bg-gray p-3 fw-semibold btn-outline">
@@ -126,8 +152,9 @@ export default function CartDetails() {
                   <button
                     onClick={handleSavePurchase}
                     className={` py-2 text-ceneter ${classes["proceed-buy-button"]} fw-semibold ${classes["text-sm"]} px-3 py-3`}
+                    disabled={btnProceed}
                   >
-                    PROCEED PAYMENT
+                    {!btnProceed ? "Proceed Purchaces" : "Loading....."}
                   </button>
                 </div>
               </div>

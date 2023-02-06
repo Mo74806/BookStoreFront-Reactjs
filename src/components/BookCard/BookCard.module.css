@@ -192,6 +192,13 @@ body {
 
 .content:hover .content-overlay {
   opacity: 1;
+  border-radius: 2rem;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: auto auto;
   transition: 0.3s all;
 }
 
@@ -280,6 +287,7 @@ body {
 
 .discount {
   position: absolute;
+  z-index: 15;
   right: -10px;
   top: -30px;
   transform: scale(1.5);

@@ -30,6 +30,7 @@ import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
 import { Route, Routes } from "react-router-dom";
 import MyFooter from "./components/MyFooter/MyFooter";
+import NotFound from "./components/NotFound/NotFound";
 function App() {
   return (
     <>
@@ -49,6 +50,7 @@ function App() {
         <Route path="/books" element={<Shop />}></Route>
         <Route path="/books/:id" element={<Book />} />
         <Route path="/cart" element={<CartDetails />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <MyFooter />
       {/* 

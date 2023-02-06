@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
+
 export default function Author(props) {
   const { id } = useParams();
   const BASE_URL = process.env.REACT_APP_BASE_URL;

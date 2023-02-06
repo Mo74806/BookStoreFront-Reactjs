@@ -9,21 +9,22 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import Features from "../../components/Features/Features";
+
 // import dotenv from "dotenv";
 // dotenv.config({ path: "../../../config.env" });
 export default function Home() {
-  const { books, isLoading } = useSelector((state) => state.books);
+  // const { books, isLoading } = useSelector((state) => state.books);
   // const [booksData, setBooks] = useState([]);
-
-  const dispatch = useDispatch();
-  let isIntial = true;
-  useEffect(() => {
-    if (isIntial) {
-      isIntial = false;
-      return;
-    }
-    dispatch(getAllBooks());
-  }, []);
+  useEffect(() => {}, []);
+  // const dispatch = useDispatch();
+  // // let isIntial = true;
+  // useEffect(() => {
+  // if (isIntial) {
+  //   isIntial = false;
+  //   return;
+  // }
+  //   dispatch(getAllBooks());
+  // }, []);
 
   return (
     <div className="row m-0 ">
@@ -55,9 +56,9 @@ export default function Home() {
       </div>
       <div className="container px-5 my-5 ">
         {" "}
-        <BestSelling title="Trending Now" books={books} ad="" />
-        <BestSelling title="Best Selling" books={books} ad="" />
-        <BestSelling title="Popular Books" books={books} ad="" />
+        <BestSelling title="Trending Now" sort="-ratingsQuantity" ad="" />
+        <BestSelling title="Best Selling" sort="-numberOfSeller" ad="" />
+        <BestSelling title="Popular Books" ad="" />
       </div>
       <Features />
     </div>

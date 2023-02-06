@@ -6,11 +6,38 @@ import StarIcon from "@material-ui/icons/Star";
 import MainButton from "../UI/MainButton/MainButton";
 import SocialMediaIcons from "../SocialMediaIcons/SocialMediaIcons";
 import CoverContainerTitle from "../UI/CoverContainerTitle/CoverContainerTitle";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import ProfilePicture from "../UI/ProfilePicture/ProfilePicture";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { cartActions } from "../../store/reducers/CartSlice";
+import { useDispatch } from "react-redux";
 import PageSubTitle from "../UI/PageSubTitle/PageSubTitle";
 export default function BookDetails(props) {
+  const { cart } = useSelector((state) => state.cart);
+  const [isInCart, setIsInCart] = useState(false);
+  useEffect(() => {
+    cart.map((item) => {
+      if (item["_id"] === props.book["_id"]) {
+        setIsInCart(true);
+      }
+    });
+  }, []);
+  let dispatch = useDispatch();
+  //increase Qty of books
+  let handleAdd = () => {
+    //pass only the needed data
+    if (isInCart === true) {
+      dispatch(cartActions.removeFromCart(props.book));
+      setIsInCart(false);
+    } else {
+      dispatch(cartActions.addToCart({ ...props.book, qty: 1 }));
+      setIsInCart(true);
+    }
+  };
+  //remove book from cart
+  let handleDelete = () => {
+    dispatch(cartActions.removeFromCart(props.book));
+  };
+
   const { name: authorName } = { ...props.book.author };
   return (
     <div className=" mx-md-0 mx-2">
@@ -113,7 +140,10 @@ export default function BookDetails(props) {
             <div className={classes["borde-line"]}></div>
             <div className="row m-0 d-flex align-items-center ">
               <div className="col-lg-6  col-12 my-xl-0 my-2">
-                <MainButton text="Add to cart " />
+                <MainButton
+                  text={!isInCart ? "Add to cart " : "Remove from cart"}
+                  handleClick={isInCart ? handleDelete : handleAdd}
+                />
               </div>
               <div className="col-lg-6 col-12 my-xl-0 my-2">
                 <MainButton

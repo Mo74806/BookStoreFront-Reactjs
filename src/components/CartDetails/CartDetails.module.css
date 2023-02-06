@@ -66,3 +66,13 @@
   overflow-y: auto;
   overflow-x: hidden;
 }
+.text-sm {
+  font-size: 0.8rem;
+}
+
+.slider {
+  height: 50rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: auto;
+}
