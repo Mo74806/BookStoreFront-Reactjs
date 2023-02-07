@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 export default function Landing() {
   let navigate = useNavigate();
   let navigateToShop = () => {
-    navigate("/shop");
+    navigate("/books");
   };
   return (
     <>

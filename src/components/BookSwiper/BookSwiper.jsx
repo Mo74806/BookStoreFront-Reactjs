@@ -25,24 +25,18 @@ export default function BookSwiper(props) {
           }`
         );
         localStorage.setItem("books", JSON.stringify(res.data.data.book));
-        console.log(res);
         return res.data.data.books;
       } catch (error) {
-        console.log(error);
-        return null;
+        return error;
       }
     };
     let books = getBooks(`sort=${props.sort}`);
 
     books.then((val) => {
-      console.log(val);
       setBooks(val);
     });
   }, []);
 
-  useEffect(() => {
-    console.log(booksData);
-  }, [booksData]);
   return (
     <div className="container">
       <Swiper
@@ -82,7 +76,6 @@ export default function BookSwiper(props) {
                   <BookCard scale={props.scale} book={book} size={props.size}>
                     {" "}
                   </BookCard>
-                  <div className={`${classes.line} col-1`}></div>
                 </SwiperSlide>
               ))
             : ""}

@@ -45,7 +45,7 @@
 .nav-items {
   list-style: none;
   display: flex;
-
+  margin-top: 16px;
   align-items: center;
   justify-content: center;
 }
@@ -103,4 +103,9 @@
   100% {
     transform: scale(1);
   }
+}
+
+.Link {
+  color: unset;
+  text-decoration: none;
 }

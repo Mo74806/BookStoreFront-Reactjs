@@ -13,7 +13,10 @@ import PageMainTitle from "../PageMainTitle/PageMainTitle";
 import { NavLink } from "react-router-dom";
 import MainButton from "../UI/MainButton/MainButton";
 import { setCookie } from "../../store/reducers/userSlice";
-
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
 export default function NavBar() {
   const { cart } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state);
@@ -58,9 +61,7 @@ export default function NavBar() {
   };
 
   return (
-    <nav
-      className={`navbar ${classes["navbar-container"]} navbar-expand-lg sticky-top `}
-    >
+    <>
       {cartShown && (
         <Modal onClose={handleAppearCart}>
           <div className="container">
@@ -89,99 +90,112 @@ export default function NavBar() {
           </div>
         </Modal>
       )}
-      <div className="container">
-        <a className={`navbar-brand text-black ${classes.brand}`} href="#">
-          La Pardaise
-        </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
 
-        <div className="collapse row navbar-collapse" id="navbarNavDropdown">
-          <ul
-            className={`py-5 col-8 justify-content-end ml-5 d-flex my-5 ${classes["nav-items"]}`}
-          >
-            <li className={`  ${classes["nav-item-link"]} `}>
-              <NavLink
-                className={`nav-link ${
-                  location.pathname == "/home" && classes.selected
-                } `}
-                to="/home"
-              >
-                Home
-              </NavLink>
-            </li>
-            <li className={` ${classes["nav-item-link"]}`}>
-              <NavLink
-                className={`nav-link ${
-                  location.pathname == "/books" && classes.selected
-                } `}
-                to="/books"
-              >
-                Shop
-              </NavLink>
-            </li>
-            <li className={`${classes["nav-item-link"]}`}>
-              <NavLink
-                className={`nav-link ${
-                  location.pathname == "/contact" && classes.selected
-                } `}
-                to="/contact"
-              >
-                Contact
-              </NavLink>
-            </li>
-          </ul>
-          <div className="col-4 text-end justify-content-end align-items-center d-flex">
-            <div className=" fs-5">
-              {user.isLoggedIn ? (
-                // <i className="fa-light fas fa-user"></i>
+      <Navbar
+        bg="light"
+        className={`${classes["navbar-container"]} sticky-top`}
+        expand="lg"
+      >
+        <Container>
+          <Navbar.Brand>
+            <a className={`navbar-brand text-black ${classes.brand}`} href="#">
+              <Link className={classes.Link} to="/home">
+                {" "}
+                La Pardaise
+              </Link>
+            </a>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <ul
+              className={` col-lg-8 justify-content-end ml-lg-5  d-flex  ${classes["nav-items"]}`}
+            >
+              <Nav className="mx-lg-auto">
+                <Nav.Link>
+                  {" "}
+                  <li className={`  ${classes["nav-item-link"]} `}>
+                    <NavLink
+                      className={`nav-link ${
+                        location.pathname == "/home" && classes.selected
+                      } `}
+                      to="/home"
+                    >
+                      Home
+                    </NavLink>
+                  </li>
+                </Nav.Link>
+                <Nav.Link>
+                  {" "}
+                  <li className={` ${classes["nav-item-link"]}`}>
+                    <NavLink
+                      className={`nav-link ${
+                        location.pathname == "/books" && classes.selected
+                      } `}
+                      to="/books"
+                    >
+                      Shop
+                    </NavLink>
+                  </li>
+                </Nav.Link>
+                <Nav.Link>
+                  {" "}
+                  <li className={`${classes["nav-item-link"]}`}>
+                    <NavLink
+                      className={`nav-link ${
+                        location.pathname == "/contact" && classes.selected
+                      } `}
+                      to="/contact"
+                    >
+                      Contact
+                    </NavLink>
+                  </li>
+                </Nav.Link>
+              </Nav>
+            </ul>
 
-                <p className="fw-bold    my-3 ">
-                  {" "}
-                  <button
-                    className={`${classes.text} border border-0 bg-transparent m-0 p-0`}
-                    onClick={handleLogout}
-                  >
-                    {`${user.user.user.userName}   |  `}{" "}
-                    <span className={`${classes["text-sm"]}`}>Logout</span>
-                  </button>
-                </p>
-              ) : (
-                <p className="fw-bold  my-4 ">
-                  {" "}
-                  <Link className={`${classes.text}  `} to="/login">
-                    Login
-                  </Link>{" "}
-                </p>
-              )}
-            </div>
-            <div>
-              <button
-                className={` px-3 border border-0 bg-transparent fs-5 position-relative  `}
-                onClick={handleAppearCart}
-              >
-                <i className="fa-solid fa-cart-shopping"></i>
-                <div
-                  className={`${classes["cart-number"]} ${
-                    btnIsHighlighted ? classes.bump : ""
-                  } `}
+            <div className="col-4 text-end justify-content-end align-items-center d-flex">
+              <div className=" fs-5">
+                {user.isLoggedIn ? (
+                  // <i className="fa-light fas fa-user"></i>
+
+                  <p className="fw-bold    my-3 ">
+                    {" "}
+                    <button
+                      className={`${classes.text} border border-0 bg-transparent m-0 p-0`}
+                      onClick={handleLogout}
+                    >
+                      {`${user.user.user.userName}   |  `}{" "}
+                      <span className={`${classes["text-sm"]}`}>Logout</span>
+                    </button>
+                  </p>
+                ) : (
+                  <p className="fw-bold  my-4 ">
+                    {" "}
+                    <Link className={`${classes.text}  `} to="/login">
+                      Login
+                    </Link>{" "}
+                  </p>
+                )}
+              </div>
+              <div>
+                <button
+                  className={` px-3 border border-0 bg-transparent fs-5 position-relative  `}
+                  onClick={handleAppearCart}
                 >
-                  {qty}
-                </div>
-              </button>
+                  <i className="fa-solid fa-cart-shopping"></i>
+                  <div
+                    className={`${classes["cart-number"]} ${
+                      btnIsHighlighted ? classes.bump : ""
+                    } `}
+                  >
+                    {qty}
+                  </div>
+                </button>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </>
   );
 }

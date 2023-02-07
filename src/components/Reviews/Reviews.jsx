@@ -72,7 +72,7 @@ export default function Reviews(props) {
             ""
           )}
 
-          {reviews.length > 0 ? (
+          {reviews && reviews.length > 0 ? (
             reviews.map((item, index) => {
               return (
                 <SingleReview
