@@ -10,7 +10,10 @@ import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner";
 export default function Book() {
   const { id } = useParams();
   const { book, isLoading } = useSelector((state) => state.books);
-
+  useEffect(() => {
+    // 👇️ scroll to top on page load
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
   let dispatch = useDispatch();
   let getBookfn = () => {
     dispatch(getBook(id));

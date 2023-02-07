@@ -10,7 +10,10 @@ export default function Author(props) {
   const { id } = useParams();
   const BASE_URL = process.env.REACT_APP_BASE_URL;
   const [author, setAuthor] = useState({});
-
+  useEffect(() => {
+    // 👇️ scroll to top on page load
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
   useEffect(() => {
     let getAuthorData = async () => {
       let res = await axios.get(`${BASE_URL}authors/${id}`);

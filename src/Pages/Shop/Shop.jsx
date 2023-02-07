@@ -22,8 +22,14 @@ export default function Shop() {
   const { filters } = useSelector((state) => state);
 
   let dispatch = useDispatch();
+
   const [page, setPage] = useState(1);
   const [filterModal, setFilterModel] = useState(false);
+  useEffect(() => {
+    // 👇️ scroll to top on page load
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
+
   useEffect(() => {
     dispatch(
       getAllBooks(

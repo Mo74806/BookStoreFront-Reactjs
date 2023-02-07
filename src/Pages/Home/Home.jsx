@@ -13,6 +13,10 @@ import Features from "../../components/Features/Features";
 // import dotenv from "dotenv";
 // dotenv.config({ path: "../../../config.env" });
 export default function Home() {
+  useEffect(() => {
+    // 👇️ scroll to top on page load
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
   // const { books, isLoading } = useSelector((state) => state.books);
   // const [booksData, setBooks] = useState([]);
   useEffect(() => {}, []);
