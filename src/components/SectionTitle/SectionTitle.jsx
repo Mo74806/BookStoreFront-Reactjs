@@ -1,7 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import MainButton from "../UI/MainButton/MainButton";
 import classes from "./SectionTitle.module.css";
 export default function SectionTitle(props) {
+  let navigate = useNavigate();
+  let goShop = () => {
+    navigate("/books");
+  };
   return (
     <>
       <div className="row d-flex m-0 ">

@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import { getAllBooks } from "../../store/reducers/bookSlice";
 import axios from "axios";
 export default function BookSwiper(props) {
