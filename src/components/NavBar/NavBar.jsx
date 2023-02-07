@@ -114,9 +114,9 @@ export default function NavBar() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <ul
-              className={` col-lg-8 justify-content-end ml-lg-5  d-flex  ${classes["nav-items"]}`}
+              className={` col-lg-8  px-2   ml-lg-5  d-flex  ${classes["nav-items"]}`}
             >
-              <Nav className="mx-lg-auto">
+              <Nav className="mx-auto">
                 <Nav.Link>
                   {" "}
                   <li className={`  ${classes["nav-item-link"]} `}>
@@ -159,7 +159,7 @@ export default function NavBar() {
               </Nav>
             </ul>
 
-            <div className="col-4 text-end justify-content-end align-items-center d-flex">
+            <div className="col-lg-4 col-12 text-end justify-content-end align-items-center d-flex">
               <div className=" fs-5">
                 {user.isLoggedIn ? (
                   // <i className="fa-light fas fa-user"></i>

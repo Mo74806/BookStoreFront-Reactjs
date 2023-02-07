@@ -1,5 +1,4 @@
 .navbar-container {
-  height: 58px;
   background-color: rgb(255, 255, 255);
   color: black;
   box-shadow: rgba(17, 12, 46, 0.3) 0px 48px 100px 0px;
@@ -14,7 +13,10 @@
   font-weight: bold;
   font-size: 0.8rem;
   padding: 19px 0;
+  border-radius: 30px;
+
   width: 8rem;
+  color: black;
 
   text-align: center;
 }
@@ -37,6 +39,8 @@
 }
 
 .selected {
+  border-radius: 30px;
+
   background-color: #f65d4e;
   font-size: 1rem;
   color: white;
@@ -48,6 +52,9 @@
   margin-top: 16px;
   align-items: center;
   justify-content: center;
+  background-color: gainsboro;
+  border-radius: 30px;
+  color: black;
 }
 .cart-number {
   position: absolute;
