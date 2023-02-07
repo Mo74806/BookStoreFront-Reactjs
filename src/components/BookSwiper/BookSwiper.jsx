@@ -58,7 +58,7 @@ export default function BookSwiper(props) {
       >
         {" "}
         <div className="row  m-0 p-0 my-5 position-relative">
-          {booksData.length > 0
+          {booksData && booksData.length > 0
             ? booksData.map((book, index) => (
                 <SwiperSlide key={index}>
                   <BookCard scale={props.scale} book={book} size={props.size}>
