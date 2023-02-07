@@ -10,8 +10,8 @@ export default function AuthorBook(props) {
         textSize={"small"}
         button={false}
       />
-      <div className="row container">
-        <BookSwiper scale={true} books={props.books} shownBook={4} size={300} />
+      <div className=" ">
+        <BookSwiper scale={true} books={props.books} shownBook={4} size={280} />
       </div>
     </>
   );

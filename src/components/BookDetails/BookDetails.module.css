@@ -63,3 +63,11 @@
   transition: all 0.3s;
 }
 
+.link {
+  color: unset;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #f65d4e;
+}

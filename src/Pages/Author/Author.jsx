@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
+import LoadingSpinner from "../../components/UI/LoadingSpinner/LoadingSpinner";
 
 export default function Author(props) {
   const { id } = useParams();
@@ -25,12 +26,18 @@ export default function Author(props) {
 
   return (
     <>
-      <div className="my-5 px-2 container">
-        <AuthorData author={author} />
-      </div>
-      <div className="container">
-        <AuthorBook books={author.books} title={author.name} />
-      </div>
+      {author ? (
+        <>
+          <div className="my-5 px-2 container">
+            <AuthorData author={author} />
+          </div>
+          <div className="container">
+            <AuthorBook books={author.books} title={author.name} />
+          </div>
+        </>
+      ) : (
+        <LoadingSpinner />
+      )}
     </>
   );
 }

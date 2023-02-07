@@ -199,7 +199,7 @@ export default function Shop() {
         >
           <BookGrid />
           <div className="row d-flex  justify-content-center">
-            <div className="col-md-4 col-12 d-flex align-items-end  fw-bold">
+            <div className="col-md-4 col-10 d-flex align-items-md-end  fw-bold">
               <Stack spacing={2}>
                 <Pagination
                   count={5}

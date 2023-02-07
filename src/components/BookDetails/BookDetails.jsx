@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import { cartActions } from "../../store/reducers/CartSlice";
 import { useDispatch } from "react-redux";
 import PageSubTitle from "../UI/PageSubTitle/PageSubTitle";
+import { Link } from "react-router-dom";
 export default function BookDetails(props) {
   const { cart } = useSelector((state) => state.cart);
   const [isInCart, setIsInCart] = useState(false);
@@ -38,7 +39,7 @@ export default function BookDetails(props) {
     dispatch(cartActions.removeFromCart(props.book));
   };
 
-  const { name: authorName } = { ...props.book.author };
+  const { name: authorName, id } = { ...props.book.author };
   return (
     <div className=" mx-md-0 mx-2">
       <PageSubTitle
@@ -103,7 +104,9 @@ export default function BookDetails(props) {
                   <p
                     className={` mx-2 col-7 fw-semibold ${classes["text-sm"]} `}
                   >
-                    {authorName}
+                    <Link class={classes.link} to={`/author/${id}`}>
+                      {authorName}
+                    </Link>
                   </p>
                   <small className="mx-3 text-black-50 d-lg-block d-none ">
                     |
@@ -139,27 +142,23 @@ export default function BookDetails(props) {
             <p className={classes.description}>{props.book.description}</p>
             <div className={classes["borde-line"]}></div>
             <div className="row m-0 d-flex align-items-center ">
-              <div className="col-lg-6  col-12 my-xl-0 my-2">
+              <div className="col-lg-6  col-12 mt-xl-2 mb-xl-3 mt-4 mb-5">
                 <MainButton
                   text={!isInCart ? "Add to cart " : "Remove from cart"}
                   handleClick={isInCart ? handleDelete : handleAdd}
                 />
               </div>
-              <div className="col-lg-6 col-12 my-xl-0 my-2">
-                <MainButton
-                  color={"#0077b5"}
-                  text="Add to watchlist"
-                ></MainButton>
-              </div>
             </div>
             <div className={classes["borde-line"]}></div>
-            <div className="  d-flex  align-items-center mt-2">
+            <div className="  d-flex row col-lg-12 col-12  align-items-center mt-2">
               {" "}
-              <p className={`text-black-50 ${classes["text-sm"]} fw-semibold`}>
+              <p
+                className={`text-black-50    ${classes["text-sm"]} fw-semibold`}
+              >
                 Category:
               </p>
               <p
-                className={` mx-1 fw-semibold  ${classes["text-sm"]} fw-semibold`}
+                className={`  fw-semibold text-start  ${classes["text-sm"]} fw-semibold`}
               >
                 {props.book["category"].map((item, index) => (
                   <span key={index} className="px-2">

@@ -75,7 +75,7 @@ export default function NavBar() {
                   <PageMainTitle title="Cart" className="" />
                 </div>
                 <div className={`${classes.slider}`}>
-                  {cart.length !== 0 &&
+                  {cart.length !== 0 ? (
                     cart.map((book, index) => (
                       <div key={index} className={`${classes["line-under"]}`}>
                         <SingleItemDetails
@@ -83,7 +83,13 @@ export default function NavBar() {
                           book={book}
                         />
                       </div>
-                    ))}
+                    ))
+                  ) : (
+                    <p className="fw-semibold my-5 text-center py-5">
+                      {" "}
+                      there is no items in your cart
+                    </p>
+                  )}
                 </div>
               </div>
             </div>

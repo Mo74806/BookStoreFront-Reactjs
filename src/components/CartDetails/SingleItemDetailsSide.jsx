@@ -13,7 +13,7 @@ export default function SingleItemDetailsSide(props) {
     <>
       <div className="row d-flex align-items-center">
         <div
-          className={`col-3  ${classes["item-img"]} d-flex align-items-center `}
+          className={`col-3 py-lg-0 py-3  ${classes["item-img"]} d-flex align-items-center `}
         >
           <img className="" src={props.book.imageCover} alt="" />
         </div>

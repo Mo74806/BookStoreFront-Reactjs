@@ -18,12 +18,13 @@ export default function SingleItemDetails(props) {
   return (
     <>
       <div
-        className={`${props.className} ${classes["item-cart-details"]} my-4 row   d-flex  align-items-center`}
+        className={`${props.className} ${classes["item-cart-details"]} my-lg-5 row   d-flex  align-items-center`}
       >
-        <div className={`col-3 ${classes["item-img"]}`}>
+        <div className={`col-3 py-lg-0 py-1  ${classes["item-img"]}`}>
           <img src={props.book.imageCover} alt="" />
         </div>
-        <div className={`$classes["item-title"]} col-3 `}>
+
+        <div className={`${classes["item-title"]} col-3 `}>
           <div className="fw-semibold">{props.book.title}</div>
           <div className={`${classes.author} text-black-50`}>
             {props.book.author.name}
@@ -31,11 +32,11 @@ export default function SingleItemDetails(props) {
         </div>
 
         <div
-          className={`${classes["item-price"]} col-lg-1 col-12 text-end fw-bold text-danger`}
+          className={`${classes["item-price"]} col-2 col-md-1  text-end fw-bold text-danger`}
         >
           ${props.book.price}
         </div>
-        <div className="col-lg-3 col-12 text-end  justify-content-md-center justify-content-end   d-flex ">
+        <div className="col-md-3 col-4 align-items-start  text-end  justify-content-md-center justify-content-end    d-flex ">
           <button
             className={`${classes["item-counter"]} ${classes.Btn}`}
             onClick={handleAdd}

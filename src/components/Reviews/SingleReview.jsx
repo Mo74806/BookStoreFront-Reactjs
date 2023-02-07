@@ -36,7 +36,7 @@ export default function SingleReview(props) {
       )}
       <div className={`row mt-2  ${classes.description} `}>
         <ProfilePicture />
-        <div className="col-10  my-4">
+        <div className="col-6  my-4">
           <div className={`row  mx-2 px-1   fw-bold ${classes["text-sm"]} `}>
             <div className="col-11">{props.review.user.userName}</div>
             {props.hisReview ? (
@@ -66,7 +66,7 @@ export default function SingleReview(props) {
         className={`row m-0 d-flex flex-row-reverse   ${classes["review-text"]}`}
       >
         <div
-          className={`col-lg-10 col-8 text-lg-start text-center ${classes["text-sm"]} `}
+          className={`col-lg-10 col-6 text-lg-start text-center ${classes["text-sm"]} `}
         >
           {" "}
           {props.review.review}

@@ -40,11 +40,11 @@ export default function BookSwiper(props) {
         breakpoints={{
           0: {
             slidesPerView: 2,
-            spaceBetween: 10,
+            spaceBetween: 20,
           },
           640: {
             slidesPerView: 2,
-            spaceBetween: 10,
+            spaceBetween: 20,
           },
           820: {
             slidesPerView: 3,

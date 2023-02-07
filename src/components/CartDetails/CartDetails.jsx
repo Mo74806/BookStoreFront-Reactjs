@@ -82,10 +82,8 @@ export default function CartDetails() {
             You don't have any books in the cart yet
           </p>
         ) : (
-          <div className="row m-5 d-flex justify-content-center ">
-            <div
-              className={`col-lg-7 my-5 my-lg-0 col-12 px-5 ${classes.book1}`}
-            >
+          <div className="row m-md-5 d-flex justify-content-center ">
+            <div className={`col-lg-7 my-5 my-lg-0 col-12  ${classes.book1}`}>
               <div className={classes.slider}>
                 {cart.length !== 0 &&
                   cart.map((book, index) => (
@@ -96,7 +94,7 @@ export default function CartDetails() {
               </div>
             </div>
             <div
-              className={`col-lg-5 ${classes["side-card"]} col-10 my-lg-0 my-5 px-5 py-3 bg-white rounded`}
+              className={`col-lg-5 ${classes["side-card"]} col-12  my-md-0 my-5 px-md-5 py-3  rounded rounded-5`}
             >
               <div className={`${classes.title} fw-semibold fs-3`}>Total</div>
               <div className={`mb-4 ${classes["side-details"]}`}>
@@ -109,17 +107,17 @@ export default function CartDetails() {
                   ))}
               </div>
               <div className={classes["price-summary"]}>
-                <div className=" row">
-                  <div className="col-7 px-1">
-                    {/* <TextField
+                <div className=" row d-flex justify-content-lg-start justify-content-center">
+                  <div className="col-7  px-1">
+                    <TextField
                       fullWidth={true}
                       id="cupon-code"
                       label="Cupon Code"
                       variant="outlined"
-                    /> */}
+                    />
                   </div>
-                  <div className="col-5  px-1 fw-bold fs-7">
-                    <button className="bg-gray p-3 fw-semibold btn-outline">
+                  <div className="col-5  px-0 fw-semibold fs-7">
+                    <button className="bg-gray py-3  px-5  fw-semibold btn-outline">
                       ADD CODE
                     </button>
                   </div>

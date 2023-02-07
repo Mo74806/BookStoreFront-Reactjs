@@ -78,7 +78,7 @@
 }
 
 .slider {
-  height: 20rem;
+  height: 15rem;
   overflow-y: auto;
   scroll-behavior: auto;
 }
