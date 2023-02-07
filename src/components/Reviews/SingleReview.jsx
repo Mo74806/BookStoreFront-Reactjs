@@ -18,7 +18,7 @@ export default function SingleReview(props) {
   let handleRemove = async () => {
     try {
       await axios.delete(
-        `http://localhost:3030/api/v1/books/${props.id}/reviews/${props.review.id}`,
+        `https://book-store-api-kappa.vercel.app/api/v1/books/${props.id}/reviews/${props.review.id}`,
         { headers: { authorization: Cookies.get("token") } }
       );
       setDeleted(true);

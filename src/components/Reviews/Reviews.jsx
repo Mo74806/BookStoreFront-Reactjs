@@ -28,7 +28,7 @@ export default function Reviews(props) {
   let handleLogin = () => setShowLogin(true);
   let getHisReview = async () => {
     let res = await axios.get(
-      `http://localhost:3030/api/v1/books/${props.id}/reviews`,
+      `https://book-store-api-kappa.vercel.app/api/v1/books/${props.id}/reviews`,
 
       { headers: { authorization: Cookies.get("token") } }
     );

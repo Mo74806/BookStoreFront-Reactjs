@@ -21,7 +21,7 @@ export default function AddReviewForm(props) {
   let handleSubmit = async (e) => {
     if (isTouched || !warning) {
       let res = await axios.post(
-        `http://localhost:3030/api/v1/books/${props.id}/reviews`,
+        `https://book-store-api-kappa.vercel.app/api/v1/books/${props.id}/reviews`,
         {
           review: review.text,
           rating: review.rate,
