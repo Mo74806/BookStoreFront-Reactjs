@@ -26,7 +26,7 @@ export default function BookSwiper(props) {
     setBooks(books);
   }, [books]);
   return (
-    <div className="container">
+    <div className="">
       <Swiper
         className="py-5 my-3 "
         spaceBetween={0}
@@ -40,14 +40,14 @@ export default function BookSwiper(props) {
         breakpoints={{
           0: {
             slidesPerView: 2,
-            spaceBetween: 0,
+            spaceBetween: 10,
           },
           640: {
             slidesPerView: 2,
-            spaceBetween: 0,
+            spaceBetween: 10,
           },
-          900: {
-            slidesPerView: 2,
+          820: {
+            slidesPerView: 3,
             spaceBetween: 0,
           },
           1300: {
@@ -57,7 +57,7 @@ export default function BookSwiper(props) {
         }}
       >
         {" "}
-        <div className="row  m-0 p-0 my-5 position-relative">
+        <div className=" m-0 p-0 my-5  position-relative">
           {booksData && booksData.length > 0
             ? booksData.map((book, index) => (
                 <SwiperSlide key={index}>

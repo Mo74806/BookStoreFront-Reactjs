@@ -12,3 +12,7 @@
   transform: scale(0.8);
   transition: 0.4s all ease;
 } */
+
+.imgNotfound img {
+  width: 17rem;
+}

@@ -1,0 +1,9 @@
+.filters {
+  height: 30rem;
+  overflow-y: auto;
+  scroll-behavior: auto;
+}
+
+.shop {
+  overflow: hidden;
+}

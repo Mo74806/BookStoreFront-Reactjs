@@ -25,7 +25,7 @@ export default function SectionTitle(props) {
         ></div>
         {props.button ? (
           <div className="col-lg-2 col-4 m-0">
-            <MainButton text="View All" />
+            <MainButton text="View All" handleClick={goShop} />
           </div>
         ) : (
           ""

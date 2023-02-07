@@ -1,7 +1,12 @@
 import React from "react";
 import classes from "./AdContainer.module.css";
 import MainButton from "./../MainButton/MainButton";
+import { useNavigate } from "react-router-dom";
 export default function AdContainer(props) {
+  let navigate = useNavigate();
+  let goShop = () => {
+    navigate("/books");
+  };
   return (
     <>
       <div
@@ -21,7 +26,7 @@ export default function AdContainer(props) {
           {props.subtitle}{" "}
         </p>
         <div className={`${classes["ad-btn"]}`}>
-          <MainButton text="Show More" />
+          <MainButton text="Show More" handleClick={goShop} />
         </div>
         <div className="row m-0">
           <div className="col-6">

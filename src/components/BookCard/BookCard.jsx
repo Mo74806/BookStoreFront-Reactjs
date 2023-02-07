@@ -41,11 +41,10 @@ export default function BookCard(props) {
 
   let handleShowBookDetails = () => {};
   let { name: authorName, id } = { ...props.book.author };
-  let bookId = props.book["_id"];
 
   return (
     <>
-      <div className={`${props.scale ? classes.card : classes.card1} mb-5`}>
+      <div className={`${props.scale ? classes.card : classes.card1} mb-5 `}>
         <div
           style={{ width: props.size || 170 }}
           className={` ${classes["card-img"]}  mx-1  row `}

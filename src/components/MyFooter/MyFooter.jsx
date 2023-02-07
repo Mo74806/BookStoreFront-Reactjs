@@ -88,8 +88,8 @@ export default function MyFooter() {
             </button>
           </div>
         </div>
-        <div className="row">
-          <div className="col-12 text-end my-4">
+        <div className="row d-md-flex d-none">
+          <div className="col-12 text-end  my-4">
             <img
               width="348"
               height="26"
