@@ -6,9 +6,12 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { getAllBooks } from "../../store/reducers/bookSlice";
 import axios from "axios";
 export default function BookSwiper(props) {
   const [booksData, setBooks] = useState([]);
+  const { books } = useSelector((state) => state.books);
   const dispatch = useDispatch();
   let isIntial = true;
 
@@ -17,26 +20,12 @@ export default function BookSwiper(props) {
       isIntial = false;
       return;
     }
-    let getBooks = async function (filters) {
-      try {
-        const res = await axios.get(
-          `https://book-store-api-kappa.vercel.app/api/v1/books?${
-            filters || ""
-          }`
-        );
-        localStorage.setItem("books", JSON.stringify(res.data.data.book));
-        return res.data.data.books;
-      } catch (error) {
-        return error;
-      }
-    };
-    let books = getBooks(`sort=${props.sort}`);
-
-    books.then((val) => {
-      setBooks(val);
-    });
+    dispatch(getAllBooks(`sort=${props.sort}`));
   }, []);
 
+  useEffect(() => {
+    setBooks(books);
+  }, [books]);
   return (
     <div className="container">
       <Swiper
