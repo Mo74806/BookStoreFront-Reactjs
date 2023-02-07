@@ -8,7 +8,7 @@ import { useState } from "react";
 
 export default function Author(props) {
   const { id } = useParams();
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const BASE_URL = "https://book-store-api-kappa.vercel.app/api/v1/";
   const [author, setAuthor] = useState({});
   useEffect(() => {
     // 👇️ scroll to top on page load

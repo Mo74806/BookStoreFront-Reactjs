@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+const BASE_URL = "https://book-store-api-kappa.vercel.app/api/v1/";
 
 const initialState = {
   user: Cookies.get("token") ? JSON.parse(localStorage.getItem("user")) : "",

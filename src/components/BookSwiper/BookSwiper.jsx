@@ -20,7 +20,9 @@ export default function BookSwiper(props) {
     let getBooks = async function (filters) {
       try {
         const res = await axios.get(
-          `${process.env.REACT_APP_BASE_URL}books?${filters || ""}`
+          `https://book-store-api-kappa.vercel.app/api/v1/books?${
+            filters || ""
+          }`
         );
         localStorage.setItem("books", JSON.stringify(res.data.data.book));
         console.log(res);

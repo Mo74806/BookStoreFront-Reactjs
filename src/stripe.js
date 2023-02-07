@@ -9,7 +9,7 @@ export const booking = async (purchaseId) => {
   try {
     // 1) Get checkout session from API
     const session = await axios.get(
-      `${process.env.REACT_APP_BASE_URL}purchaces/createSession/${purchaseId}`,
+      `https://book-store-api-kappa.vercel.app/api/v1/purchaces/createSession/${purchaseId}`,
       { headers: { authorization: Cookies.get("token") } }
     );
 

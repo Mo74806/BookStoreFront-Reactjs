@@ -10,7 +10,7 @@ export default function LoginForm(props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state);
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  const BASE_URL = "https://book-store-api-kappa.vercel.app/api/v1/";
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [loginError, setLoginError] = useState({
     email: null,

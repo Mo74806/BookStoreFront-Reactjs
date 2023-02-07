@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 
 import axios from "axios";
 import { setCookie } from "./userSlice";
-const BASE_URL = process.env.REACT_APP_BASE_URL;
+const BASE_URL = "https://book-store-api-kappa.vercel.app/api/v1/";
 export const createPurchase = createAsyncThunk(
   "Purchase/createPurchase",
   async (data, { rejectWithValue }) => {

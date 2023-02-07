@@ -12,7 +12,11 @@ import MainButton from "../UI/MainButton/MainButton";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 export default function Signup() {
-  const BASE_URL = process.env.REACT_APP_BASE_URL;
+  useEffect(() => {
+    // 👇️ scroll to top on page load
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
+  const BASE_URL = "https://book-store-api-kappa.vercel.app/api/v1/";
   const navigate = useNavigate();
   const [signupData, setSignupData] = useState({
     firstName: "",
