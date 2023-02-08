@@ -10,25 +10,11 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import Features from "../../components/Features/Features";
 
-// import dotenv from "dotenv";
-// dotenv.config({ path: "../../../config.env" });
 export default function Home() {
   useEffect(() => {
     // 👇️ scroll to top on page load
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, []);
-  // const { books, isLoading } = useSelector((state) => state.books);
-  // const [booksData, setBooks] = useState([]);
-  useEffect(() => {}, []);
-  // const dispatch = useDispatch();
-  // // let isIntial = true;
-  // useEffect(() => {
-  // if (isIntial) {
-  //   isIntial = false;
-  //   return;
-  // }
-  //   dispatch(getAllBooks());
-  // }, []);
 
   return (
     <div className="row m-0 ">
@@ -37,7 +23,7 @@ export default function Home() {
         <CategorySwiper />
       </div>
 
-      <div className="row py-5 bg-light d-flex justify-content-center">
+      <div className="row m-0 py-5 bg-light d-flex justify-content-center">
         <div className="col-lg-5 col-12 m-lg-0 my-2">
           {" "}
           <AdContainer

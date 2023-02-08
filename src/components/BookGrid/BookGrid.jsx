@@ -9,7 +9,6 @@ import LoadingSpinner from "../UI/LoadingSpinner/LoadingSpinner";
 
 export default function BookGrid(props) {
   const { books, isLoading } = useSelector((state) => state.books);
-
   const dispatch = useDispatch();
   let isIntial = true;
   useEffect(() => {
@@ -36,7 +35,7 @@ export default function BookGrid(props) {
             </div>
           );
         })}
-      {!isLoading && books.length <= 0 && (
+      {!isLoading && books && books.length <= 0 && (
         <div
           className={`mx-auto text-center   py-5 fw-semibold fs-1 ${classes.imgNotfound}`}
         >
