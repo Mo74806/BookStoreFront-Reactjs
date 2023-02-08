@@ -47,12 +47,16 @@ export default function CartDetails() {
         purchase.serverError ===
         "the selected books are more than the ones in the stoke "
       ) {
-        setError(purchase.serverError);
         setBtnProceed(false);
+        setError(purchase.serverError);
         return;
       }
       book();
-    } else setLogin(true);
+    } else {
+      setBtnProceed(false);
+
+      setLogin(true);
+    }
   };
   let book = () => {
     booking(purchase.purchase["_id"]);
@@ -88,7 +92,7 @@ export default function CartDetails() {
                 {cart.length !== 0 &&
                   cart.map((book, index) => (
                     <div key={index} className={classes["line-under"]}>
-                      <SingleItemDetails book={book} />
+                      <SingleItemDetails stoke={true} book={book} />
                     </div>
                   ))}
               </div>
@@ -108,7 +112,7 @@ export default function CartDetails() {
               </div>
               <div className={classes["price-summary"]}>
                 <div className=" row d-flex justify-content-lg-start justify-content-center">
-                  <div className="col-7  px-1">
+                  <div className="col-7   px-1">
                     <TextField
                       fullWidth={true}
                       id="cupon-code"
@@ -116,8 +120,8 @@ export default function CartDetails() {
                       variant="outlined"
                     />
                   </div>
-                  <div className="col-5  px-0 fw-semibold fs-7">
-                    <button className="bg-gray py-3  px-5  fw-semibold btn-outline">
+                  <div className="col-5 d-flex align-items-center  px-0 fw-semibold fs-7">
+                    <button className="bg-gray py-3   px-4  fw-semibold btn-outline">
                       ADD CODE
                     </button>
                   </div>

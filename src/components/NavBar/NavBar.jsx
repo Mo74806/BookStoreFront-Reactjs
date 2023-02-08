@@ -81,6 +81,7 @@ export default function NavBar() {
                         <SingleItemDetails
                           className={"mx-5 px-2"}
                           book={book}
+                          stoke={false}
                         />
                       </div>
                     ))

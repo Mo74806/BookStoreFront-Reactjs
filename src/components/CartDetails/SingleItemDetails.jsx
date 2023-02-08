@@ -36,7 +36,11 @@ export default function SingleItemDetails(props) {
         >
           ${props.book.price}
         </div>
-        <div className="col-md-3 col-4 align-items-start  text-end  justify-content-md-center justify-content-end    d-flex ">
+        <div
+          className={`${
+            props.stoke ? "col-md-3" : "col-lg-5"
+          } col-4  align-items-start  text-end  justify-content-md-center justify-content-end    d-flex `}
+        >
           <button
             className={`${classes["item-counter"]} ${classes.Btn}`}
             onClick={handleAdd}
@@ -55,12 +59,14 @@ export default function SingleItemDetails(props) {
             -
           </button>
         </div>
-        <div className="col-2 d-md-flex justify-content-center mt-3 d-none">
-          <p className={`${classes["text-sm"]} mx-2`}> In Stock :</p>{" "}
-          <div className="fw-semibold text-primary text-end m-0 p-0">
-            {props.book.StokeQty}
+        {props.stoke && (
+          <div className="col-2 d-md-flex justify-content-center mt-3 d-none">
+            <p className={`${classes["text-sm"]} mx-2`}> In Stock :</p>{" "}
+            <div className="fw-semibold text-primary text-end m-0 p-0">
+              {props.book.StokeQty}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </>
   );
