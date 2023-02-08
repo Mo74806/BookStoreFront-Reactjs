@@ -135,7 +135,7 @@ export default function NavBar() {
                   <li className={` ${classes["nav-item-link"]}`}>
                     <NavLink
                       className={`nav-link ${
-                        location.pathname == "/books" && classes.selected
+                        location.pathname === "/books" && classes.selected
                       } `}
                       to="/books"
                     >
@@ -148,11 +148,11 @@ export default function NavBar() {
                   <li className={`${classes["nav-item-link"]}`}>
                     <NavLink
                       className={`nav-link ${
-                        location.pathname == "/contact" && classes.selected
+                        location.pathname === "/cart" && classes.selected
                       } `}
-                      to="/contact"
+                      to="/cart"
                     >
-                      Contact
+                      Cart
                     </NavLink>
                   </li>
                 </Nav.Link>

@@ -19,11 +19,13 @@ export default function BookSwiper(props) {
       isIntial = false;
       return;
     }
-    dispatch(getAllBooks(`sort=${props.sort}`));
+    if (!props.books) {
+      dispatch(getAllBooks(`sort=${props.sort}`));
+    }
   }, []);
 
   useEffect(() => {
-    setBooks(books);
+    setBooks(props.books || books);
   }, [books]);
   return (
     <div className="">
