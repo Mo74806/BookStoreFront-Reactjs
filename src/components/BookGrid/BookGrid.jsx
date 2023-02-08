@@ -35,7 +35,7 @@ export default function BookGrid(props) {
             </div>
           );
         })}
-      {!isLoading && books && books.length <= 0 && (
+      {!isLoading && books.length <= 0 && (
         <div
           className={`mx-auto text-center   py-5 fw-semibold fs-1 ${classes.imgNotfound}`}
         >
