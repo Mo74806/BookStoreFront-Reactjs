@@ -16,7 +16,7 @@ const loadState = () => {
   }
 };
 const initialState = {
-  books: loadState(),
+  books: loadState() || [],
   book: false,
   isLoading: false,
   serverError: null,

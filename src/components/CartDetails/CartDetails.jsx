@@ -45,10 +45,11 @@ export default function CartDetails() {
       await dispatch(createPurchase({ cart, itemsQty }));
       if (
         purchase.serverError ===
-        "the selected books are more than the ones in the stoke "
+          "the selected books are more than the ones in the stoke " ||
+        !purchase.purchase["_id"]
       ) {
         setBtnProceed(false);
-        setError(purchase.serverError);
+        setError("the selected books are more than the ones in the stoke");
         return;
       }
       book();
@@ -59,7 +60,13 @@ export default function CartDetails() {
     }
   };
   let book = () => {
-    booking(purchase.purchase["_id"]);
+    try {
+      booking(purchase.purchase["_id"]);
+    } catch (e) {
+      setBtnProceed(false);
+      setError(e);
+      return;
+    }
   };
   return (
     <div className="row m-0">
